@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string.h>
-#include "parser.h"
-#include "gui_crap.h"
+#include "src/parser.h"
+#include "src/gui_crap.h"
 #include <gtkmm.h>
 
 
