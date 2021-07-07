@@ -38,6 +38,11 @@ struct Item
 	int Variant;
 	long long CrafterID;
 	std::string Crafter;
+
+	//for gui
+	int Type;
+	int MaxStack;
+	std::string ItemImage;
 };
 
 struct Station

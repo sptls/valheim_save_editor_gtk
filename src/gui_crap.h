@@ -15,6 +15,7 @@ class IHateGTK
 {
 	public:
 		std::string path;
+		std::map<std::string, std::string> item_images;
 		Player player;
 		GuardianPowersGui GPG;
 		IHateGTK();
@@ -54,10 +55,13 @@ class IHateGTK
 		Gtk::ComboBoxText* comboboxtext_beard;
 		Gtk::CheckButton* checkbutton_female_beard;
 		Gtk::Label* label_gp_change_desc;
+		Gtk::Grid* grid_inventory;
+		Gtk::Image image_slot_background[32];
+		Gtk::Image image_inventory_slot[32];
 
-		void GetWidgets();
+		void GetItemImages();
 		void OpenClicked();
-		void Fill();
+		void Refresh();
 		void Save();
 		void HandleResponse(int id, Gtk::FileChooserDialog* dialog);
 		void ChangeGPClose();

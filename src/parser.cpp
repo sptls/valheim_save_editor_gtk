@@ -89,6 +89,9 @@ void Player::LoadSaveFile(const char* filepath)
 		data.Inventory[i].Variant = r.ReadInt();
 		data.Inventory[i].CrafterID = r.ReadLL();
 		data.Inventory[i].Crafter = r.ReadString();
+		//for gui only
+		data.Inventory[i].Type = GetItemType(data.Inventory[i].Name);
+		data.Inventory[i].MaxStack = GetMaxStackSize(data.Inventory[i].Type);
 	}
 
 	data.NoRecipes = r.ReadInt();
@@ -424,3 +427,52 @@ void Player::UpdateDataLength()
 	data.DataLength = d + l;
 };
 
+int Player::GetItemType(const std::string& str)
+{
+	std::string tmp = str;
+	for(unsigned int i = 0; i < tmp.length(); i++)
+		tmp[i] = std::tolower(tmp[i]);
+
+	std::string weapons[] = {"sword", "axe", "club", "mace", "torch","sledge", "knife",
+							 "atgeir", "spear", "bow"};
+	std::string armors[] = {"helmet", "armor", "cape"};
+
+	for(int i = 0; i < 10; i++)
+	{
+		if(tmp.find(weapons[i]) != std::string::npos)
+			return vse::WEAPON;
+	}
+
+	for(int i = 0; i < 3; i++)
+	{
+		if(tmp.find(armors[i]) != std::string::npos)
+			return vse::ARMOR;
+	}
+
+	if(tmp.find("shield") != std::string::npos)
+		return vse::SHIELD;
+	if(tmp.find("arrow") != std::string::npos)
+		return vse::ARROW;
+
+
+	return 0;
+};
+
+int Player::GetMaxStackSize(int type)
+{
+	switch(type)
+	{
+		case vse::WEAPON:
+		case vse::SHIELD:
+		case vse::ARMOR:
+		case vse::TOOL:
+		case vse::STATION:
+			return 1;
+		case vse::ARROW:
+		case vse::SEED:
+			return 100;
+		default:
+			return 0;
+	}
+	return 0;
+};

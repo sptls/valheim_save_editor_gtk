@@ -2,65 +2,7 @@
 #include <gtkmm.h>
 #include <iostream>
 
-IHateGTK::IHateGTK()
-{
-	builder = Gtk::Builder::create_from_file("gui/vse_gui.glade");
-};
-
-IHateGTK::~IHateGTK()
-{
-	
-};
-
-void IHateGTK::GetWidgets()
-{
-	builder->get_widget("fixed", fixed);
-	builder->get_widget("notebook", notebook);
-	builder->get_widget("window", window);
-	builder->get_widget("load_button", load_button);
-	builder->get_widget("save_file", save_file);
-	builder->get_widget("label_top", label_top);
-	builder->get_widget("entry_name", entry_name);
-	builder->get_widget("label_kills", label_kills);
-	builder->get_widget("label_deaths", label_deaths);
-	builder->get_widget("label_crafts", label_crafts);
-	builder->get_widget("label_builds", label_builds);
-	builder->get_widget("label_start_seed", label_start_seed);
-	builder->get_widget("label_max_hp", label_max_hp);
-	builder->get_widget("label_current_hp", label_current_hp);
-	builder->get_widget("label_stamina", label_stamina);
-	builder->get_widget("label_guardian_power", label_guardian_power);
-	builder->get_widget("label_gp_desc", label_gp_desc);
-	builder->get_widget("image_gp", image_gp);
-	builder->get_widget("button_change_gp", button_change_gp);
-	builder->get_widget("dialog_change_gp", dialog_change_gp);
-	builder->get_widget("button_change_gp_ok", button_change_gp_ok);
-	builder->get_widget("button_change_gp_close", button_change_gp_close);
-	builder->get_widget("comboboxtext_gp", comboboxtext_gp);
-	builder->get_widget("window_saved_popup", window_saved_popup);
-	builder->get_widget("button_saved_ok", button_saved_ok);
-	builder->get_widget("label_saved_to", label_saved_to);
-	builder->get_widget("label_gp_cooldown", label_gp_cooldown);
-	builder->get_widget("button_reset_gp_cooldown", button_reset_gp_cooldown);
-	builder->get_widget("comboboxtext_hair", comboboxtext_hair);
-	builder->get_widget("radiobutton_male", radiobutton_male);
-	builder->get_widget("radiobutton_female", radiobutton_female);
-	builder->get_widget("comboboxtext_beard", comboboxtext_beard);
-	builder->get_widget("checkbutton_female_beard", checkbutton_female_beard);
-	builder->get_widget("label_gp_change_desc", label_gp_change_desc);
-
-
-
-	button_change_gp_ok->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::SetGP));
-	button_change_gp->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::ChangeGPOpenDialog));
-	button_change_gp_close->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::ChangeGPClose));
-	load_button->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::OpenClicked));
-	save_file->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::Save));
-	button_saved_ok->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::CloseSavedWindow));
-	button_reset_gp_cooldown->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::ResetGPCD));
-};
-
-void IHateGTK::Fill()
+void IHateGTK::Refresh()
 {
 	entry_name->set_sensitive();
 	button_change_gp->set_sensitive();
@@ -104,27 +46,38 @@ void IHateGTK::Fill()
 	{
 		if(GPG.g[i].gp_var_name ==  player.data.GuardianPower)
 		{
-			image_gp->set(GPG.g[i].image_file);
+			image_gp->set_from_resource(GPG.g[i].image_file);
 			label_guardian_power->set_text(GPG.g[i].gp_name);
 			label_gp_desc->set_text(GPG.g[i].description);
 			break;
 		}
 	}
 
-	entry_name->signal_changed().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::OnEntryChange), entry_name, &player.data.Name));
-	radiobutton_male->signal_toggled().connect(sigc::mem_fun(*this, &IHateGTK::ChangeGender));
-	radiobutton_female->signal_toggled().connect(sigc::mem_fun(*this, &IHateGTK::ChangeGender));
-	comboboxtext_hair->signal_changed().connect(sigc::mem_fun(*this, &IHateGTK::HairChange));
-	comboboxtext_beard->signal_changed().connect(sigc::mem_fun(*this, &IHateGTK::BeardChanege));
-	checkbutton_female_beard->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::FemaleBeardActive));
-	comboboxtext_gp->signal_changed().connect(sigc::mem_fun(*this, &IHateGTK::GPComboChange));
-
+	//fill image source map
+	GetItemImages();
+	//clear any existing images on reaload
+	for(int i = 0; i < 32; i++)
+		image_inventory_slot[i].clear();
+	//add images to inventory items
+	for(int i = 0; i < player.data.NumberOfItems; i++)
+	{
+		if(item_images.contains(player.data.Inventory[i].Name))
+		{
+			player.data.Inventory[i].ItemImage = item_images[player.data.Inventory[i].Name];
+			int pos = 0;
+			pos += player.data.Inventory[i].posY * 8;
+			pos += player.data.Inventory[i].posX;
+			image_inventory_slot[pos].set_from_resource(player.data.Inventory[i].ItemImage);
+			if(player.data.Inventory[i].BoolEquipped)
+				image_slot_background[pos].set_from_resource("/gui/item_slot_equipped.png");
+		}
+	}
 };
 
 void IHateGTK::SetGP()
 {
 	player.data.GuardianPower = comboboxtext_gp->get_active_id();
-	Fill();
+	Refresh();
 	dialog_change_gp->hide();
 	save_file->set_sensitive();
 };
@@ -183,7 +136,7 @@ void IHateGTK::HandleResponse(int id, Gtk::FileChooserDialog* dialog)
 		path = dialog->get_file()->get_path();
 		std::cout << "File: " << path << std::endl;
 		player.LoadSaveFile(path.c_str());
-		Fill();
+		Refresh();
 	}
 	dialog->hide();
 };
@@ -197,7 +150,7 @@ void IHateGTK::ResetGPCD()
 {
 	label_gp_cooldown->set_text("0.0");
 	player.data.GuardianCooldown = atof(label_gp_cooldown->get_text().c_str());
-	Fill();
+	Refresh();
 };
 
 void IHateGTK::ChangeGender()
