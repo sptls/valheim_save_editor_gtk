@@ -55,10 +55,15 @@ void IHateGTK::Refresh()
 
 	//fill image source map
 	GetItemImages();
-	//clear any existing images on reaload
+	//clear inventory slots
 	for(int i = 0; i < 32; i++)
+	{
 		image_inventory_slot[i].clear();
-	//add images to inventory items
+		image_slot_background[i].set_from_resource("/gui/item_slot.png");
+		label_inventory_slot[i].set_text("");
+	}
+	
+	//refresh inventory page
 	for(int i = 0; i < player.data.NumberOfItems; i++)
 	{
 		if(item_images.contains(player.data.Inventory[i].Name))
@@ -70,8 +75,23 @@ void IHateGTK::Refresh()
 			image_inventory_slot[pos].set_from_resource(player.data.Inventory[i].ItemImage);
 			if(player.data.Inventory[i].BoolEquipped)
 				image_slot_background[pos].set_from_resource("/gui/item_slot_equipped.png");
+			if(player.data.Inventory[i].MaxStack != 1)
+				label_inventory_slot[pos].set_text(std::to_string(player.data.Inventory[i].Stack) + "/" + std::to_string(player.data.Inventory[i].MaxStack));
 		}
 	}
+
+
+	//temporary for skill show
+	for(int i = 0; i < player.data.NoSkills; i++)
+	{
+
+		std::cout << "Skill Name: " << player.data.Skills[i].Name << std::endl;
+		std::cout << "Skill id: " << player.data.Skills[i].NameInt << std::endl;
+		std::cout << "Skill Level: " << player.data.Skills[i].Level << std::endl;
+		std::cout << "Skill Rest: " << player.data.Skills[i].Rest << std::endl;
+		std::cout << std::endl;
+	}
+
 };
 
 void IHateGTK::SetGP()

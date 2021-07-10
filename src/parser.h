@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <fstream>
 #include <vector>
+#include <map>
 #include "data_containers.h"
 
 namespace vse
@@ -30,6 +31,7 @@ class Player
 	public:
 		Player();
 		~Player();
+		std::map<int, std::string> skill_names;
 		void LoadSaveFile(const char* filepath);
 		void SaveFile(const char* filepath);
 		void UpdateDataLength();

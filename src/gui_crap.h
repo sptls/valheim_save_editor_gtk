@@ -4,6 +4,7 @@
 #include <gtkmm.h>
 #include "parser.h"
 #include "guardian_powers.h"
+#include <giomm.h>
 
 enum
 {
@@ -14,7 +15,8 @@ enum
 class IHateGTK
 {
 	public:
-		std::string path;
+		int inventory_slot_pos = 0;
+		std::string path = "";
 		std::map<std::string, std::string> item_images;
 		Player player;
 		GuardianPowersGui GPG;
@@ -58,6 +60,28 @@ class IHateGTK
 		Gtk::Grid* grid_inventory;
 		Gtk::Image image_slot_background[32];
 		Gtk::Image image_inventory_slot[32];
+		Gtk::EventBox event_box_inventory[32];
+		Gtk::Label label_inventory_slot[32];
+		Gtk::Menu popup_menu;
+		Gtk::MenuItem menu_item_edit;
+		Gtk::MenuItem menu_item_delete;
+		Gtk::MenuItem menu_item_add;
+		Gtk::Window* window_item_edit;
+		Gtk::ComboBoxText* comboboxtext_wie_item_type;
+		Gtk::ComboBoxText* comboboxtext_wie_item;
+		Gtk::Scale* scale_wie_stack;
+		Gtk::Label* label_wie_current_stack;
+		Gtk::Label* label_wie_max_stack;
+		Gtk::Scale* scale_wie_durability;
+		Gtk::Label* label_wie_current_durability;
+		Gtk::Label* label_wie_max_durability;
+		Gtk::SpinButton* spinbutton_wie_quality;
+		Gtk::Entry* entry_wie_crafter;
+		Gtk::Button* button_wie_ok;
+		Gtk::Button* button_wie_cancel;
+
+
+
 
 		void GetItemImages();
 		void OpenClicked();
@@ -75,6 +99,10 @@ class IHateGTK
 		void BeardChanege();
 		void FemaleBeardActive();
 		void GPComboChange();
+		bool ContextMenu(GdkEventButton* event, Gtk::EventBox* event_box);
+		void OnMenuClick(int* pos, int action_type);
+		void UpdateItemEditWindow(int x, int y);
+		void ItemEditWindowButtons(int action);
 };
 
 #endif

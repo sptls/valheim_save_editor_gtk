@@ -8,7 +8,21 @@
 
 Player::Player()
 {
-	
+	skill_names.insert_or_assign(1, "Swords");
+	skill_names.insert_or_assign(2, "Knives");
+	skill_names.insert_or_assign(3, "Clubs");
+	skill_names.insert_or_assign(4, "Polearms");
+	skill_names.insert_or_assign(5, "Spears");
+	skill_names.insert_or_assign(6, "Blocking");
+	skill_names.insert_or_assign(7, "Axes");
+	skill_names.insert_or_assign(8, "Bows");
+	skill_names.insert_or_assign(11, "Unarmed");
+	skill_names.insert_or_assign(12, "Pickaxes");
+	skill_names.insert_or_assign(13, "Wood Cutting");
+	skill_names.insert_or_assign(100, "Jump");
+	skill_names.insert_or_assign(101, "Sneak");
+	skill_names.insert_or_assign(102, "Run");
+	skill_names.insert_or_assign(103, "Swim");
 };
 
 Player::~Player()
@@ -163,6 +177,8 @@ void Player::LoadSaveFile(const char* filepath)
 		data.Skills[i].NameInt = r.ReadInt();
 		data.Skills[i].Level = r.ReadFloat();
 		data.Skills[i].Rest = r.ReadFloat();
+		//for gui only
+		data.Skills[i].Name = skill_names[data.Skills[i].NameInt]; 
 	}
 
 	SaveFile.close();

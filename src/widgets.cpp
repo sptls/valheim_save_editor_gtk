@@ -1,4 +1,5 @@
 #include "gui_crap.h"
+#include <iostream>
 
 
 IHateGTK::IHateGTK()
@@ -40,6 +41,21 @@ IHateGTK::IHateGTK()
 	builder->get_widget("checkbutton_female_beard", checkbutton_female_beard);
 	builder->get_widget("label_gp_change_desc", label_gp_change_desc);
 	builder->get_widget("grid_inventory", grid_inventory);
+	builder->get_widget("window_item_edit", window_item_edit);
+	builder->get_widget("comboboxtext_wie_item_type", comboboxtext_wie_item_type);
+	builder->get_widget("comboboxtext_wie_item", comboboxtext_wie_item);
+	builder->get_widget("scale_wie_stack", scale_wie_stack);
+	builder->get_widget("label_wie_current_stack", label_wie_current_stack);
+	builder->get_widget("label_wie_max_stack", label_wie_max_stack);
+	builder->get_widget("scale_wie_durability", scale_wie_durability);
+	builder->get_widget("label_wie_current_durability", label_wie_current_durability);
+	builder->get_widget("label_wie_max_durability", label_wie_max_durability);
+	builder->get_widget("spinbutton_wie_quality", spinbutton_wie_quality);
+	builder->get_widget("entry_wie_crafter", entry_wie_crafter);
+	builder->get_widget("button_wie_ok", button_wie_ok);
+	builder->get_widget("button_wie_cancel", button_wie_cancel);
+
+
 
 
 
@@ -57,22 +73,159 @@ IHateGTK::IHateGTK()
 	comboboxtext_beard->signal_changed().connect(sigc::mem_fun(*this, &IHateGTK::BeardChanege));
 	checkbutton_female_beard->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::FemaleBeardActive));
 	comboboxtext_gp->signal_changed().connect(sigc::mem_fun(*this, &IHateGTK::GPComboChange));
-
+	button_wie_ok->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ItemEditWindowButtons), 1));
+	button_wie_cancel->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ItemEditWindowButtons), 0));
 
 
 	for(int i = 0, row = 0; row < 4; row++)
 	{
 		for(int column = 0; column < 8; column++)
 		{
+			event_box_inventory[i].signal_button_press_event().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ContextMenu), &event_box_inventory[i]));
+			event_box_inventory[i].set_events(Gdk::BUTTON_PRESS_MASK);
 			image_slot_background[i].set_visible();
 			image_inventory_slot[i].set_visible();
 			image_slot_background[i].set_from_resource("/gui/item_slot.png");
+			event_box_inventory[i].add(image_inventory_slot[i]);
+			event_box_inventory[i].set_visible_window(false);
+			event_box_inventory[i].set_above_child();
+			event_box_inventory[i].show();
+			label_inventory_slot[i].set_size_request(90,20);
+			label_inventory_slot[i].set_margin_top(70);
+			label_inventory_slot[i].set_text("");
+			label_inventory_slot[i].show();
 			grid_inventory->attach(image_slot_background[i], column, row);
-			grid_inventory->attach(image_inventory_slot[i], column, row);
+			grid_inventory->attach(event_box_inventory[i], column, row);
+			grid_inventory->attach(label_inventory_slot[i], column, row);
 			i++;
 		}
 	}
+//popup menu for inventory
+	popup_menu.append(menu_item_edit);
+	popup_menu.append(menu_item_delete);
+	popup_menu.append(menu_item_add);
+	menu_item_edit.set_label("Edit");
+	menu_item_delete.set_label("Delete");
+	menu_item_add.set_label("Add");
+	popup_menu.show_all();
+	menu_item_edit.signal_activate().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::OnMenuClick), &inventory_slot_pos, 0));
+	menu_item_delete.signal_activate().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::OnMenuClick), &inventory_slot_pos, 1));
+
 };
+
+
+bool IHateGTK::ContextMenu(GdkEventButton* event, Gtk::EventBox* event_box)
+{
+  if( (event->type == GDK_BUTTON_PRESS) && (event->button == 3) )
+  {
+  	for(int i = 0; i < 32; i++)
+  		if(event_box == &event_box_inventory[i])	
+  			inventory_slot_pos = i;
+
+	int x, y;
+	y = inventory_slot_pos/8;
+	x = inventory_slot_pos%8;
+
+	bool slot_has_item = false;
+
+	for(int i = 0; i < player.data.NumberOfItems; i++)
+	{
+		if(x == player.data.Inventory[i].posX && y == player.data.Inventory[i].posY)
+		{
+			menu_item_add.hide();
+			menu_item_edit.show();
+			menu_item_delete.show();
+  			popup_menu.popup_at_widget(event_box, Gdk::GRAVITY_CENTER, Gdk::GRAVITY_CENTER, nullptr);
+  			slot_has_item = true;
+  		}
+	}
+	if(!slot_has_item)
+	{
+		menu_item_add.show();
+		menu_item_edit.hide();
+		menu_item_delete.hide();
+  		popup_menu.popup_at_widget(event_box, Gdk::GRAVITY_CENTER, Gdk::GRAVITY_CENTER, nullptr);
+	}
+	return true;
+  }
+};
+
+void IHateGTK::OnMenuClick(int* pos, int action_type)
+{
+	int x, y;
+	y = *pos/8;
+	x = *pos%8;
+
+	switch(action_type)
+	{
+		case 0:
+			for(int i = 0; i < player.data.NumberOfItems; i++)
+			{
+				if(x == player.data.Inventory[i].posX && y == player.data.Inventory[i].posY)
+				{
+					UpdateItemEditWindow(x, y);
+					window_item_edit->show();
+					std::cout << "Name: " << player.data.Inventory[i].Name << std::endl;
+					std::cout << "Stack: " << player.data.Inventory[i].Stack << std::endl;
+					std::cout << "Durability: " << player.data.Inventory[i].Durability << std::endl;
+					std::cout << "Equipped: " << player.data.Inventory[i].BoolEquipped << std::endl;
+					std::cout << "Quality: " << player.data.Inventory[i].Quality << std::endl;
+					std::cout << "Variant: " << player.data.Inventory[i].Variant << std::endl;
+					std::cout << "CrafterID: " << player.data.Inventory[i].CrafterID << std::endl;
+					std::cout << "Crafter: " << player.data.Inventory[i].Crafter << std::endl;
+				}
+			}
+			break;
+		case 1:
+			Item* tmp = new Item[player.data.NumberOfItems-1];
+			for(int i = 0, j = 0; i < player.data.NumberOfItems; i++)
+			{
+				if(x == player.data.Inventory[i].posX && y == player.data.Inventory[i].posY)
+					continue;
+			
+				tmp[j++] = player.data.Inventory[i];
+			}
+			delete[] player.data.Inventory;
+			player.data.NumberOfItems--;
+			player.data.Inventory = tmp;
+			Refresh();
+			break;
+	}
+};
+
+void IHateGTK::UpdateItemEditWindow(int x, int y)
+{
+	for(int i = 0; i < player.data.NumberOfItems; i++)
+	{
+		if(x == player.data.Inventory[i].posX && y == player.data.Inventory[i].posY)
+		{
+			scale_wie_stack->set_range(1, player.data.Inventory[i].MaxStack);
+			scale_wie_stack->set_value(player.data.Inventory[i].Stack);
+			scale_wie_durability->set_range(1, 1000);
+			scale_wie_durability->set_value(player.data.Inventory[i].Durability);
+			entry_wie_crafter->set_text(player.data.Inventory[i].Crafter);
+			spinbutton_wie_quality->set_range(1, 4);
+			spinbutton_wie_quality->set_value(player.data.Inventory[i].Quality);
+			spinbutton_wie_quality->set_increments(1, -1);
+		}
+	}
+};
+
+void IHateGTK::ItemEditWindowButtons(int action)
+{
+	switch(action)
+	{
+		case 0:
+			std::cout << "Cancel clicked, closing" << std::endl;
+			window_item_edit->hide();
+			break;
+		case 1:
+			std::cout << "Ok clicked, closing" << std::endl;
+			window_item_edit->hide();
+			break;
+	}
+};
+
 
 IHateGTK::~IHateGTK()
 {

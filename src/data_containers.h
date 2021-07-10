@@ -64,11 +64,20 @@ struct Food
 	float StaminaLeft;
 };
 
+/*
+namespace vse_skillnames
+{
+	std::string name[] = {"Axes", "Blocking", "Bows", "Clubs", "Jump", "Knives", "Pickaxes", "Run", "Polearms", "Sneak", "Spears", "Swim", "Swords", "Unarmed", "Wood Cutting"};
+};
+*/
+
 struct Skill
 {
 	int NameInt;
 	float Level;
 	float Rest;
+	//for gui
+	std::string Name;
 };
 
 
