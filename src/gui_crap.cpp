@@ -81,16 +81,24 @@ void IHateGTK::Refresh()
 	}
 
 
-	//temporary for skill show
-	for(int i = 0; i < player.data.NoSkills; i++)
-	{
 
-		std::cout << "Skill Name: " << player.data.Skills[i].Name << std::endl;
-		std::cout << "Skill id: " << player.data.Skills[i].NameInt << std::endl;
-		std::cout << "Skill Level: " << player.data.Skills[i].Level << std::endl;
-		std::cout << "Skill Rest: " << player.data.Skills[i].Rest << std::endl;
-		std::cout << std::endl;
+	//skills tab
+	for(int i = 0; i < 15; i++)
+	{
+		if(i <= player.data.NoSkills)
+		{
+			std::string tmp = player.data.Skills[i].Name;
+			tmp += "\n";
+			tmp += std::to_string((int)player.data.Skills[i].Level);
+			tmp += "/100";
+
+			label_skill_name[i].set_text(tmp);
+			label_skill_name[i].show();
+			levelbar_skill[i].set_value(player.data.Skills[i].Level);
+			levelbar_skill[i].show();
+		}
 	}
+	
 
 };
 

@@ -54,9 +54,12 @@ IHateGTK::IHateGTK()
 	builder->get_widget("entry_wie_crafter", entry_wie_crafter);
 	builder->get_widget("button_wie_ok", button_wie_ok);
 	builder->get_widget("button_wie_cancel", button_wie_cancel);
-
-
-
+	builder->get_widget("grid_skills", grid_skills);
+	builder->get_widget("window_change_skill", window_change_skill);
+	builder->get_widget("label_skill_change", label_skill_change);
+	builder->get_widget("spinbutton_skill_change", spinbutton_skill_change);
+	builder->get_widget("button_skill_change_ok", button_skill_change_ok);
+	builder->get_widget("button_skill_change_cancel", button_skill_change_cancel);
 
 
 	button_change_gp_ok->signal_clicked().connect(sigc::mem_fun(*this, &IHateGTK::SetGP));
@@ -111,6 +114,32 @@ IHateGTK::IHateGTK()
 	menu_item_edit.signal_activate().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::OnMenuClick), &inventory_slot_pos, 0));
 	menu_item_delete.signal_activate().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::OnMenuClick), &inventory_slot_pos, 1));
 
+
+	spinbutton_skill_change->set_range(0.0, 100.0);
+	//setup for skills grid
+	for(int i = 0, column = 0; column < 3; column++)
+	{
+		for(int row = 0; row < 5; row++)
+		{
+			eventbox_skill[i].add(label_skill_name[i]);
+			//eventbox_skill[i].set_above_child();
+			eventbox_skill[i].show();
+			eventbox_skill[i].signal_button_press_event().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ChangeSkillLevel), i));
+			grid_skills->attach(eventbox_skill[i],column, row);
+			grid_skills->attach(levelbar_skill[i],column, row);
+			//label_skill_name[i].set_justify(Gtk::Justification::CENTER);
+			label_skill_name[i].show();
+			levelbar_skill[i].show();
+			levelbar_skill[i].set_max_value(100.0);
+			levelbar_skill[i].set_min_value(0.0);
+			i++;
+		}
+	}
+
+	button_skill_change_ok->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ChangeSkillButtons), 1));
+	button_skill_change_cancel->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ChangeSkillButtons), 0));
+	spinbutton_skill_change->set_increments(1.0, -1.0);
+
 };
 
 
@@ -137,6 +166,7 @@ bool IHateGTK::ContextMenu(GdkEventButton* event, Gtk::EventBox* event_box)
 			menu_item_delete.show();
   			popup_menu.popup_at_widget(event_box, Gdk::GRAVITY_CENTER, Gdk::GRAVITY_CENTER, nullptr);
   			slot_has_item = true;
+  			break;
   		}
 	}
 	if(!slot_has_item)
@@ -146,8 +176,8 @@ bool IHateGTK::ContextMenu(GdkEventButton* event, Gtk::EventBox* event_box)
 		menu_item_delete.hide();
   		popup_menu.popup_at_widget(event_box, Gdk::GRAVITY_CENTER, Gdk::GRAVITY_CENTER, nullptr);
 	}
-	return true;
   }
+  return true;
 };
 
 void IHateGTK::OnMenuClick(int* pos, int action_type)
@@ -165,14 +195,6 @@ void IHateGTK::OnMenuClick(int* pos, int action_type)
 				{
 					UpdateItemEditWindow(x, y);
 					window_item_edit->show();
-					std::cout << "Name: " << player.data.Inventory[i].Name << std::endl;
-					std::cout << "Stack: " << player.data.Inventory[i].Stack << std::endl;
-					std::cout << "Durability: " << player.data.Inventory[i].Durability << std::endl;
-					std::cout << "Equipped: " << player.data.Inventory[i].BoolEquipped << std::endl;
-					std::cout << "Quality: " << player.data.Inventory[i].Quality << std::endl;
-					std::cout << "Variant: " << player.data.Inventory[i].Variant << std::endl;
-					std::cout << "CrafterID: " << player.data.Inventory[i].CrafterID << std::endl;
-					std::cout << "Crafter: " << player.data.Inventory[i].Crafter << std::endl;
 				}
 			}
 			break;
@@ -216,14 +238,33 @@ void IHateGTK::ItemEditWindowButtons(int action)
 	switch(action)
 	{
 		case 0:
-			std::cout << "Cancel clicked, closing" << std::endl;
 			window_item_edit->hide();
 			break;
 		case 1:
-			std::cout << "Ok clicked, closing" << std::endl;
 			window_item_edit->hide();
 			break;
 	}
+};
+
+bool IHateGTK::ChangeSkillLevel(GdkEventButton *event, int slot_id)
+{
+		spinbutton_skill_change->set_value(player.data.Skills[slot_id].Level);
+		std::string tmp = "Set skill level for ";
+		tmp += player.data.Skills[slot_id].Name;
+		label_skill_change->set_text(tmp);
+		skill_slot_nr = slot_id;
+		window_change_skill->show();
+		return true;
+};
+
+void IHateGTK::ChangeSkillButtons(int action)
+{
+	if(action)
+	{
+		player.data.Skills[skill_slot_nr].Level = spinbutton_skill_change->get_value();	
+		Refresh();
+	}
+	window_change_skill->hide();
 };
 
 

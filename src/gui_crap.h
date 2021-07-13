@@ -16,6 +16,7 @@ class IHateGTK
 {
 	public:
 		int inventory_slot_pos = 0;
+		int skill_slot_nr = 0;
 		std::string path = "";
 		std::map<std::string, std::string> item_images;
 		Player player;
@@ -79,8 +80,16 @@ class IHateGTK
 		Gtk::Entry* entry_wie_crafter;
 		Gtk::Button* button_wie_ok;
 		Gtk::Button* button_wie_cancel;
-
-
+		Gtk::Grid* grid_skills;
+		Gtk::Label label_skill_name[15];
+		Gtk::LevelBar levelbar_skill[15];
+		Gtk::SpinButton spinbutton_skill[15];
+		Gtk::EventBox eventbox_skill[15];
+		Gtk::Window* window_change_skill;
+		Gtk::Label* label_skill_change;
+		Gtk::SpinButton* spinbutton_skill_change;
+		Gtk::Button* button_skill_change_ok;
+		Gtk::Button* button_skill_change_cancel;
 
 
 		void GetItemImages();
@@ -103,6 +112,8 @@ class IHateGTK
 		void OnMenuClick(int* pos, int action_type);
 		void UpdateItemEditWindow(int x, int y);
 		void ItemEditWindowButtons(int action);
+		bool ChangeSkillLevel(GdkEventButton *event, int slot_id);
+		void ChangeSkillButtons(int action);
 };
 
 #endif
