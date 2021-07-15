@@ -12,8 +12,9 @@ all: clean
 	@${CXX} -g -o build/vse -rdynamic ${CFLAGS} ${LIBS} main.cpp src/*.cpp
 	@echo Done.
 	@echo "All done. Run \"vse\" from build folder"
-	@./build/vse
 clean:
 	@echo -n Deleting build folder and it contents... 
 	@rm -rf build/
 	@echo Done.
+run:
+	./build/vse	

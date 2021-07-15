@@ -122,14 +122,11 @@ IHateGTK::IHateGTK()
 		for(int row = 0; row < 5; row++)
 		{
 			eventbox_skill[i].add(label_skill_name[i]);
-			//eventbox_skill[i].set_above_child();
-			eventbox_skill[i].show();
 			eventbox_skill[i].signal_button_press_event().connect(sigc::bind(sigc::mem_fun(*this, &IHateGTK::ChangeSkillLevel), i));
 			grid_skills->attach(eventbox_skill[i],column, row);
 			grid_skills->attach(levelbar_skill[i],column, row);
+			//this doesn't worke for some reason
 			//label_skill_name[i].set_justify(Gtk::Justification::CENTER);
-			label_skill_name[i].show();
-			levelbar_skill[i].show();
 			levelbar_skill[i].set_max_value(100.0);
 			levelbar_skill[i].set_min_value(0.0);
 			i++;

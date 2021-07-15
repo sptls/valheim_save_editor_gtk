@@ -40,8 +40,10 @@ struct Item
 	std::string Crafter;
 
 	//for gui
+	bool IsEquippable;
 	int Type;
 	int MaxStack;
+	float MaxDurability;
 	std::string ItemImage;
 };
 

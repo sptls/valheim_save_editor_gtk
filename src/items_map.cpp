@@ -82,9 +82,6 @@ void IHateGTK::GetItemImages()
 	item_images.insert({"ArrowWood", "/items/Wood_arrow.png"});
 
 
-
-
-
 	//armors
 	item_images.insert({"HelmetBronze", "/items/Bronze_helmet.png"});
 	item_images.insert({"CapeTrollHide", "/items/troll_hide_cape.png"});
@@ -115,4 +112,68 @@ void IHateGTK::GetItemImages()
 	item_images.insert({"ArmorWolfLegs", "/items/Wolf_armor_legs.png"});
 	item_images.insert({"CapeWolf", "/items/Wolf_fur_cape.png"});
 	item_images.insert({"HelmetYule", "/items/Yule_hat.png"});
+
+
+	//mats, food, trophies, etc...
+	item_images.insert({"Barley", "/items/Barley.png"});
+	item_images.insert({"BarleyFlour", "/items/Barley_flour.png"});
+	item_images.insert({"Bloodbag", "/items/Bloodbag.png"});
+	item_images.insert({"Blueberries", "/items/Blueberries.png"});
+	item_images.insert({"BoneFragments", "/items/Bone_fragments.png"});
+	item_images.insert({"BronzeNails", "/items/Bronze_nails.png"});
+	item_images.insert({"BronzeNails", "/items/Bronze_nails.png"});
+	item_images.insert({"Carrot", "/items/Carrot.png"});
+	item_images.insert({"Chain", "/items/Chain.png"});
+	item_images.insert({"Chitin", "/items/Chitin.png"});
+	item_images.insert({"Cloudberry", "/items/Cloudberry.png"});
+	item_images.insert({"Coal", "/items/Coal.png"});
+	item_images.insert({"FishCooked", "/items/Fish_cooked.png"});
+	item_images.insert({"CookedLoxMeat", "/items/Cooked_lox_meat.png"});
+	item_images.insert({"SerpentMeatCooked", "/items/Serpent_meat_cooked.png"});
+	item_images.insert({"Crystal", "/items/Crystal.png"});
+	item_images.insert({"Dandelion", "/items/Dandelion.png"});
+	item_images.insert({"DeerHide", "/items/Deer_hide.png"});
+	item_images.insert({"TrophyDear", "/items/Trophy_dear.png"});
+	item_images.insert({"DragonTear", "/items/Dragon_tear.png"});
+	item_images.insert({"TrophyHatchling", "/items/Trophy_hatchling.png"});
+	item_images.insert({"TrophyDraugrElite", "/items/Trophy_draugr_elite.png"});
+	item_images.insert({"Entrails", "/items/Entrails.png"});
+	item_images.insert({"Feathers", "/items/Feathers.png"});
+	item_images.insert({"Flax", "/items/Flax.png"});
+	item_images.insert({"Flint", "/items/Flint.png"});
+	item_images.insert({"FreezeGland", "/items/Freeze_gland.png"});
+	item_images.insert({"GreydwarfEye", "/items/Greydwarf_eye.png"});
+	item_images.insert({"Guck", "/items/Guck.png"});
+	item_images.insert({"HardAntler", "/items/Hard_antler.png"});
+	item_images.insert({"Honey", "/items/Honey.png"});
+	item_images.insert({"IronNails", "/items/Iron_nails.png"});
+	item_images.insert({"LeatherScraps", "/items/Leather_scraps.png"});
+	item_images.insert({"LinenThread", "/items/Linen_thread.png"});
+	item_images.insert({"LoxMeat", "/items/Lox_meat.png"});
+	item_images.insert({"LoxPelt", "/items/Lox_pelt.png"});
+	item_images.insert({"Mushroom", "/items/Mushroom.png"});
+	item_images.insert({"NeckTail", "/items/Neck_tail.png"});
+	item_images.insert({"Needle", "/items/Needle.png"});
+	item_images.insert({"Obsidian", "/items/Obsidian.png"});
+	item_images.insert({"Ooze", "/items/Ooze.png"});
+	item_images.insert({"QueenBee", "/items/Queen_bee.png"});
+	item_images.insert({"Raspberry", "/items/Raspberry.png"});
+	item_images.insert({"FishRaw", "/items/Fish_raw.png"});
+	item_images.insert({"RawMeat", "/items/Raw_meat.png"});
+	item_images.insert({"Resin", "/items/Resin.png"});
+	item_images.insert({"SerpentMeat", "/items/Serpent_meat.png"});
+	item_images.insert({"SerpentScale", "/items/Serpent_scale.png"});
+	item_images.insert({"SharpeningStone", "/items/Sharpening_stone.png"});
+	item_images.insert({"Stone", "/items/Stone.png"});
+	item_images.insert({"SurtlingCore", "/items/Surtling_core.png"});
+	item_images.insert({"Thistle", "/items/Thistle.png"});
+	item_images.insert({"TrollHide", "/items/Troll_hide.png"});
+	item_images.insert({"Turnip", "/items/Turnip.png"});
+	item_images.insert({"WolfFang", "/items/Wolf_fang.png"});
+	item_images.insert({"WolfPelt", "/items/Wolf_pelt.png"});
+	item_images.insert({"TrophyWolf", "/items/Trophy_wolf.png"});
+	item_images.insert({"Wood", "/items/Wood.png"});
+	item_images.insert({"ElderBark", "/items/Ancient_bark.png"});
+	item_images.insert({"RoundLog", "/items/Core_wood.png"});
+	item_images.insert({"FineWood", "/items/Fine_wood.png"});
 };

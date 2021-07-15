@@ -12,6 +12,7 @@ void IHateGTK::Refresh()
 	comboboxtext_hair->set_sensitive();
 	button_reset_gp_cooldown->set_sensitive();
 	checkbutton_female_beard->set_sensitive();
+	notebook->set_sensitive();
 	
 
 	entry_name->set_text(player.data.Name);	
@@ -93,9 +94,10 @@ void IHateGTK::Refresh()
 			tmp += "/100";
 
 			label_skill_name[i].set_text(tmp);
-			label_skill_name[i].show();
 			levelbar_skill[i].set_value(player.data.Skills[i].Level);
+			label_skill_name[i].show();
 			levelbar_skill[i].show();
+			eventbox_skill[i].show();
 		}
 	}
 	

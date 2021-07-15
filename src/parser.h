@@ -23,6 +23,22 @@ namespace vse
 		TROPHY,// 		20 
 		SEED,//			100
 		COINS,// 		999
+		MAT_20,
+		MAT_30,
+		MAT_50,
+		MAT_100,
+	};
+
+	enum EquipmentType
+	{
+		ONE_HANDED,
+		TWO_HANDED,
+		HELMET,
+		CHEST, 
+		LEGS, 
+		CAPE,
+		OFF_HAND,
+		AMMO,
 	};
 };
 
