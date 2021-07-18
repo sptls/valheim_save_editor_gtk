@@ -31,6 +31,7 @@ namespace vse
 
 	enum EquipmentType
 	{
+		NONE,
 		ONE_HANDED,
 		TWO_HANDED,
 		HELMET,

@@ -13,165 +13,254 @@
 		<file>yagluth.png</file>
 	</gresource>
 	<gresource prefix="/items">
-		<file>Abyssal_harpoon.png</file>
 		<file>Abyssal_razor.png</file>
-		<file>Ancient_bark_spear.png</file>
+		<file>Adze.png</file>
+		<file>Amber.png</file>
+		<file>Amber_pearl.png</file>
+		<file>Ancient_seed.png</file>
 		<file>Antler_pickaxe.png</file>
-		<file>Battleaxe.png</file>
+		<file>Anvils.png</file>
+		<file>Ancient_bark.png</file>
+		<file>Ancient_bark_spear.png</file>
+		<file>Shield_banded0.png</file>
+		<file>Barley.png</file>
+		<file>Barley_flour.png</file>
+		<file>Bed.png</file>
+		<file>Beech_seeds.png</file>
+		<file>Black_metal.png</file>
+		<file>Black_metal_scrap.png</file>
 		<file>Black_metal_shield.png</file>
 		<file>Black_metal_tower_shield.png</file>
 		<file>Blackmetal_atgeir.png</file>
 		<file>Blackmetal_axe.png</file>
 		<file>Blackmetal_knife.png</file>
 		<file>Blackmetal_sword.png</file>
+		<file>Blob_trophy.png</file>
+		<file>Bloodbag.png</file>
+		<file>Blood_pudding.png</file>
+		<file>Blueberries.png</file>
+		<file>Boar_trophy.png</file>
+		<file>Bone_fragments.png</file>
+		<file>Bonemass_trophy.png</file>
+		<file>Bonfire.png</file>
+		<file>Bread.png</file>
+		<file>Bronze.png</file>
 		<file>Bronze_atgeir.png</file>
 		<file>Bronze_axe.png</file>
 		<file>Bronze_buckler.png</file>
 		<file>Bronze_helmet.png</file>
 		<file>Bronze_mace.png</file>
+		<file>Bronze_nails.png</file>
 		<file>Bronze_pickaxe.png</file>
 		<file>Bronze_plate_cuirass.png</file>
 		<file>Bronze_plate_leggings.png</file>
 		<file>Bronze_spear.png</file>
 		<file>Bronze_sword.png</file>
 		<file>Bronzehead_arrow.png</file>
+		<file>Campfire.png</file>
 		<file>Cape_of_Odin.png</file>
+		<file>Carrot.png</file>
+		<file>Carrot_seeds.png</file>
+		<file>Carrot_soup.png</file>
+		<file>Cart.png</file>
+		<file>Chain.png</file>
+		<file>Charcoal_kiln.png</file>
+		<file>Chitin.png</file>
+		<file>Chopping_block.png</file>
+		<file>Cloudberries.png</file>
 		<file>Club.png</file>
+		<file>Coal.png</file>
+		<file>Coins.png</file>
+		<file>Cooked_fish.png</file>
+		<file>Cooked_lox_meat.png</file>
+		<file>Cooked_meat.png</file>
+		<file>Cooked_serpent_meat.png</file>
+		<file>Cooking_station.png</file>
+		<file>Copper.png</file>
 		<file>Copper_knife.png</file>
+		<file>Copper_ore.png</file>
+		<file>Core_wood.png</file>
 		<file>Crude_bow.png</file>
+		<file>Crystal.png</file>
+		<file>Cultivator.png</file>
+		<file>Dandelion.png</file>
+		<file>Deathsquito_trophy.png</file>
+		<file>Deer_hide.png</file>
 		<file>Deer_hide_cape.png</file>
+		<file>Deer_rug.png</file>
+		<file>Deer_trophy.png</file>
 		<file>Drake_helmet.png</file>
-		<file>Draugr_fang.png</file>
+		<file>Drake_trophy.png</file>
+		<file>Draugr_Elite_trophy.png</file>
+		<file>Draugr_trophy.png</file>
+		<file>Dragon_egg.png</file>
+		<file>Dragon_bed.png</file>
+		<file>Dragon_tear.png</file>
 		<file>Dverger_circlet.png</file>
-		<file>Dyrnwyn.png</file>
+		<file>Eikthyr_trophy.png</file>
+		<file>The_Elder_trophy.png</file>
+		<file>Entrails.png</file>
 		<file>Fang_spear.png</file>
+		<file>Fenring_trophy.png</file>
+		<file>Fermenter.png</file>
+		<file>Fine_wood.png</file>
 		<file>Finewood_bow.png</file>
+		<file>Fir_cone.png</file>
+		<file>Pike.png</file>
+		<file>Fishing_rod.png</file>
 		<file>Fire_arrow.png</file>
+		<file>Fire_resistance_barley_wine.png</file>
+		<file>Fish_wraps.png</file>
+		<file>Flax.png</file>
+		<file>Flint.png</file>
 		<file>Flint_axe.png</file>
+		<file>Flinthead_arrow.png</file>
 		<file>Flint_knife.png</file>
 		<file>Flint_spear.png</file>
-		<file>Flinthead_arrow.png</file>
-		<file>Frost_arrow.png</file>
+		<file>Forge.png</file>
+		<file>Forge_bellows.png</file>
+		<file>Forge_cooler.png</file>
+		<file>Forge_toolrack.png</file>
+		<file>Freeze_gland.png</file>
+		<file>Frost_resist_mead.png</file>
 		<file>Frostner.png</file>
+		<file>Fuling_berserker_trophy.png</file>
+		<file>Fuling_shaman_trophy.png</file>
+		<file>Fuling_trophy.png</file>
+		<file>Greydwarf_eye.png</file>
+		<file>Greydwarf_Brute_trophy.png</file>
+		<file>Greydwarf_Shaman_trophy.png</file>
+		<file>Greydwarf_trophy.png</file>
+		<file>Grilled_neck_tail.png</file>
+		<file>Grinding_wheel.png</file>
+		<file>Guck.png</file>
+		<file>Hard_antler.png</file>
+		<file>Hammer.png</file>
+		<file>Hoe.png</file>
+		<file>Honey.png</file>
 		<file>Hood_of_Odin.png</file>
-		<file>Huntsman_bow.png</file>
+		<file>Iron.png</file>
 		<file>Iron_atgeir.png</file>
 		<file>Iron_axe.png</file>
 		<file>Iron_greaves.png</file>
 		<file>Iron_helmet.png</file>
 		<file>Iron_mace.png</file>
+		<file>Iron_nails.png</file>
 		<file>Iron_pickaxe.png</file>
 		<file>Iron_scale_mail.png</file>
 		<file>Iron_sledge.png</file>
 		<file>Iron_sword.png</file>
 		<file>Iron_tower_shield.png</file>
 		<file>Ironhead_arrow.png</file>
+		<file>Karve.png</file>
 		<file>Leather_helmet.png</file>
 		<file>Leather_pants.png</file>
-		<file>Leather_tunic.png</file>
+		<file>Leather_scraps.png</file>
+		<file>Leech_trophy.png</file>
 		<file>Linen_cape.png</file>
+		<file>Leather_tunic.png</file>
+		<file>Linen_thread.png</file>
+		<file>Longship.png</file>
 		<file>Lox_cape.png</file>
-		<file>Needle_arrow.png</file>
+		<file>Lox_meat.png</file>
+		<file>Lox_meat_pie.png</file>
+		<file>Lox_pelt.png</file>
+		<file>Lox_rug.png</file>
+		<file>Lox_trophy.png</file>
+		<file>Mead_horn_of_Odin.png</file>
+		<file>Medium_healing_mead.png</file>
+		<file>Medium_stamina_mead.png</file>
+		<file>Megingjord.png</file>
+		<file>Minor_healing_mead.png</file>
+		<file>Minor_stamina_mead.png</file>
+		<file>Moder_trophy.png</file>
+		<file>Mushroom.png</file>
+		<file>Neck_tail.png</file>
+		<file>Neck_trophy.png</file>
+		<file>Needle.png</file>
+		<file>Obsidian.png</file>
 		<file>Obsidian_arrow.png</file>
+		<file>Ooze.png</file>
+		<file>Ooze_bomb.png</file>
 		<file>Padded_cuirass.png</file>
 		<file>Padded_greaves.png</file>
 		<file>Padded_helmet.png</file>
+		<file>Pine_cone.png</file>
 		<file>Poison_arrow.png</file>
+		<file>Poison_resistance_mead.png</file>
+		<file>Portal.png</file>
 		<file>Porcupine.png</file>
+		<file>Queen_bee.png</file>
+		<file>Queens_jam.png</file>
+		<file>Raft.png</file>
 		<file>Rag_pants.png</file>
 		<file>Rag_tunic.png</file>
-		<file>Serpent_scale_shield.png</file>
-		<file>Shield_banded0.png</file>
-		<file>Silver_arrow.png</file>
-		<file>Silver_shield.png</file>
-		<file>Silver_sword.png</file>
-		<file>Stagbreaker.png</file>
-		<file>Stone_axe.png</file>
-		<file>SwordCheat.png</file>
-		<file>Troll_leather_helmet.png</file>
-		<file>Troll_leather_pants.png</file>
-		<file>Troll_leather_tunic.png</file>
-		<file>Wolf_armor_chest.png</file>
-		<file>Wolf_armor_legs.png</file>
-		<file>Wolf_fur_cape.png</file>
-		<file>Wood_arrow.png</file>
-		<file>Wood_shield.png</file>
-		<file>Wood_tower_shield.png</file>
-		<file>Yule_hat.png</file>
-		<file>troll_hide_cape.png</file>
-		<file>Ancient_bark.png</file>
-		<file>Barley.png</file>
-		<file>Barley_flour.png</file>
-		<file>Black_metal.png</file>
-		<file>Black_metal_scrap.png</file>
-		<file>Bloodbag.png</file>
-		<file>Blueberries.png</file>
-		<file>Bone_fragments.png</file>
-		<file>Bronze.png</file>
-		<file>Bronze_nails.png</file>
-		<file>Carrot.png</file>
-		<file>Chain.png</file>
-		<file>Chitin.png</file>
-		<file>Cloudberries.png</file>
-		<file>Coal.png</file>
-		<file>Cooked_fish.png</file>
-		<file>Cooked_lox_meat.png</file>
-		<file>Cooked_serpent_meat.png</file>
-		<file>Copper.png</file>
-		<file>Copper_ore.png</file>
-		<file>Core_wood.png</file>
-		<file>Crystal.png</file>
-		<file>Dandelion.png</file>
-		<file>Deer_hide.png</file>
-		<file>Deer_trophy.png</file>
-		<file>Dragon_tear.png</file>
-		<file>Drake_trophy.png</file>
-		<file>Draugr_Elite_trophy.png</file>
-		<file>Entrails.png</file>
-		<file>Feathers.png</file>
-		<file>Fine_wood.png</file>
-		<file>Flametal.png</file>
-		<file>Flametal_ore.png</file>
-		<file>Flax.png</file>
-		<file>Flint.png</file>
-		<file>Freeze_gland.png</file>
-		<file>Greydwarf_eye.png</file>
-		<file>Guck.png</file>
-		<file>Hard_antler.png</file>
-		<file>Honey.png</file>
-		<file>Iron.png</file>
-		<file>Iron_nails.png</file>
-		<file>Ironore.png</file>
-		<file>Leather_scraps.png</file>
-		<file>Linen_thread.png</file>
-		<file>Lox_meat.png</file>
-		<file>Lox_pelt.png</file>
-		<file>Mushroom.png</file>
-		<file>Neck_tail.png</file>
-		<file>Needle.png</file>
-		<file>Obsidian.png</file>
-		<file>Ooze.png</file>
-		<file>Queen_bee.png</file>
+		<file>Rancid_Remains_trophy.png</file>
 		<file>Raspberries.png</file>
 		<file>Raw_fish.png</file>
 		<file>Raw_meat.png</file>
 		<file>Resin.png</file>
-		<file>Scrap_iron.png</file>
+		<file>Ruby.png</file>
+		<file>Sausages.png</file>
+		<file>Sconce.png</file>
 		<file>Serpent_meat.png</file>
 		<file>Serpent_scale.png</file>
+		<file>Serpent_scale_shield.png</file>
+		<file>Serpent_stew.png</file>
+		<file>Serpent_trophy.png</file>
 		<file>Sharpening_stone.png</file>
-		<file>Silver.png</file>
-		<file>Silver_ore.png</file>
+		<file>Sign.png</file>
+		<file>Silver_necklace.png</file>
+		<file>Silver_shield.png</file>
+		<file>Silver_sword.png</file>
+		<file>Skeleton_trophy.png</file>
+		<file>Smith%27s_anvil.png</file>
+		<file>Stagbreaker.png</file>
+		<file>Standing_green-burning_iron_torch.png</file>
+		<file>Standing_iron_torch.png</file>
+		<file>Standing_wood_torch.png</file>
 		<file>Stone.png</file>
+		<file>Stonecutter.png</file>
+		<file>Stone_axe.png</file>
+		<file>Stone_Golem_trophy.png</file>
+		<file>Stone_pile.png</file>
 		<file>Surtling_core.png</file>
+		<file>Surtling_trophy.png</file>
+		<file>Tankard.png</file>
+		<file>Tanning_rack.png</file>
+		<file>Tasty_mead.png</file>
 		<file>Thistle.png</file>
 		<file>Tin.png</file>
 		<file>Tin_ore.png</file>
+		<file>Torch.png</file>
 		<file>Troll_hide.png</file>
+		<file>Troll_hide_cape.png</file>
+		<file>Troll_leather_helmet.png</file>
+		<file>Troll_leather_pants.png</file>
+		<file>Troll_leather_tunic.png</file>
+		<file>Troll_trophy.png</file>
 		<file>Turnip.png</file>
+		<file>Turnip_seeds.png</file>
+		<file>Turnip_stew.png</file>
+		<file>Ward.png</file>
+		<file>Windmill.png</file>
+		<file>Wishbone.png</file>
+		<file>Withered_bone.png</file>
+		<file>Wolf_armor_chest.png</file>
+		<file>Wolf_armor_legs.png</file>
 		<file>Wolf_fang.png</file>
+		<file>Wolf_fur_cape.png</file>
 		<file>Wolf_pelt.png</file>
 		<file>Wolf_trophy.png</file>
 		<file>Wood.png</file>
+		<file>Wood_arrow.png</file>
+		<file>Wood_shield.png</file>
+		<file>Wood_tower_shield.png</file>
+		<file>Workbench.png</file>
+		<file>Wraith_trophy.png</file>
+		<file>Yagluth_trophy.png</file>
+		<file>Yellow_mushroom.png</file>
+		<file>Ymir_flesh.png</file>
+		<file>Yule_hat.png</file>
 	</gresource>
 </gresources>

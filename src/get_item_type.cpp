@@ -1,6 +1,8 @@
 #include "parser.h"
 
 
+//need to add rest of the items
+
 int Player::GetItemType(const std::string& str)
 {
 	std::string tmp = str;
@@ -10,6 +12,11 @@ int Player::GetItemType(const std::string& str)
 	std::string weapons[] = {"sword", "axe", "club", "mace", "torch","sledge", "knife",
 							 "atgeir", "spear", "bow"};
 	std::string armors[] = {"helmet", "armor", "cape"};
+
+	if(tmp.find("pickaxe") != std::string::npos)
+		return vse::TOOL;
+	if(tmp.find("trophy") != std::string::npos)
+		return vse::TROPHY;
 
 	for(int i = 0; i < 10; i++)
 	{
@@ -29,5 +36,5 @@ int Player::GetItemType(const std::string& str)
 		return vse::ARROW;
 
 
-	return 0;
+	return vse::UNKNOWN;
 };
